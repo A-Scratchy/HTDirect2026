@@ -1,0 +1,13 @@
+# Netlify deploy config for the public site.
+# The repo root is the Sanity Studio; the deployable static site lives in /web.
+[build]
+  base = "web"       # run from /web so the root package.json (Studio) is ignored
+  publish = "."      # resolved relative to base -> publishes /web as-is
+  command = ""       # plain HTML/CSS/JS, no build step
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
